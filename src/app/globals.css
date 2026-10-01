@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #1A1A1A;
+  --accent-orange: #FF6B00;
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --border-color: #2A2A2A;
+  --success: #22C55E;
+  --error: #EF4444;
+  --warning: #F59E0B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0A0A0A;
+  color: #FFFFFF;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: 'Bebas Neue', 'Montserrat', Impact, sans-serif;
+  letter-spacing: 0.03em;
+  line-height: 1.08;
+}
+
+.h1-display {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  font-size: 36px;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+}
+
+.h2-display {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  font-size: 28px;
+  line-height: 1.1;
+  letter-spacing: 0.03em;
+}
+
+.h3-display {
+  font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: 0.025em;
+}
+
+@media (min-width: 768px) {
+  .h1-display {
+    font-size: 64px;
+  }
+  .h2-display {
+    font-size: 48px;
+  }
+  .h3-display {
+    font-size: 32px;
+  }
+}
+
+.section-padding {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.gym-card {
+  background-color: #1A1A1A;
+  border: 1px solid #2A2A2A;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.gym-card:hover {
+  box-shadow: 0 8px 40px rgba(255, 107, 0, 0.2);
+  border-color: rgba(255, 107, 0, 0.45);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #FF6B00;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-weight: 700;
+  min-height: 44px;
+  min-width: 44px;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 40px rgba(255, 107, 0, 0.35);
+}
+
+.btn-primary:active {
+  transform: scale(0.99);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  border: 2px solid #FF6B00;
+  color: #FF6B00;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: 700;
+  min-height: 44px;
+  min-width: 44px;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  transform: scale(1.03);
+  background-color: rgba(255, 107, 0, 0.12);
+  box-shadow: 0 8px 40px rgba(255, 107, 0, 0.22);
+}
+
+.btn-compact {
+  padding: 10px 20px;
+  min-height: 44px;
+  font-size: 14px;
+}
+
+/* Custom sleek scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #2A2A2A;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF6B00;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

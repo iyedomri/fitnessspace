@@ -1,0 +1,78 @@
+// Prisma Schema for APEX FITNESS PostgreSQL (Supabase / PlanetScale)
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id               String          @id @default(cuid())
+  name             String
+  email            String          @unique
+  phone            String?
+  passwordHash     String?
+  avatar           String?
+  role             String          @default("member") // member | trainer | admin
+  plan             String          @default("Pro")    // Basic | Pro | Elite
+  memberId         String          @unique
+  points           Int             @default(100)
+  streakDays       Int             @default(1)
+  fitnessGoal      String?
+  fitnessLevel     String?
+  autoRenew        Boolean         @default(true)
+  createdAt        DateTime        @default(now())
+  bookings         ClassBooking[]
+  measurements     Measurement[]
+  orders           StoreOrder[]
+}
+
+model GymClass {
+  id          String         @id @default(cuid())
+  name        String
+  type        String         // HIIT | Strength | Yoga | Cardio | Boxing
+  trainerName String
+  day         String
+  time        String
+  duration    String
+  maxSpots    Int
+  spotsLeft   Int
+  difficulty  Int
+  room        String
+  bookings    ClassBooking[]
+}
+
+model ClassBooking {
+  id        String   @id @default(cuid())
+  userId    String
+  classId   String
+  status    String   @default("CONFIRMED") // CONFIRMED | WAITLIST | CANCELLED
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  gymClass  GymClass @relation(fields: [classId], references: [id])
+}
+
+model Measurement {
+  id        String   @id @default(cuid())
+  userId    String
+  date      String
+  weight    Float
+  bodyFat   Float
+  chest     Float
+  waist     Float
+  hips      Float
+  arms      Float
+  legs      Float
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model StoreOrder {
+  id        String   @id @default(cuid())
+  userId    String
+  total     Float
+  status    String   @default("PENDING")
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
